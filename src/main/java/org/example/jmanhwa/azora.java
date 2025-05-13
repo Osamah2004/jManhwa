@@ -1,42 +1,40 @@
 package org.example.jmanhwa;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-public class mangatuk extends jSoupAbstract {
+public class azora extends jSoupAbstract{
+
     private ArrayList<manhwaModel> temp = new ArrayList<>();
 
     private Document d;
 
-    public mangatuk(String url){
+    public azora(String url){
         url = url.replace(" ","+");
-        url = "https://mangatuk.com/?s="+url+"&post_type=wp-manga";
+        url = "https://azoramoon.com/?s="+url+"&post_type=wp-manga";
         d = newDocument(url);
     }
-/*
-title;
-lastChapter
-coverURL;
-url;*/
+    /*
+    title;
+    lastChapter
+    coverURL;
+    url;*/
     @Override
     public ArrayList<manhwaModel> searchResults() {
         temp.clear();
-        Element e1 = d.getElementById("loop-content");
-        Elements e2 = e1.children();
 
+        Element e = d.getElementsByClass("c-tabs-item").getFirst();
+        Elements e2 = e.children();
         for (Element element : e2) {
             temp.add(new manhwaModel(
-                    element.getElementsByTag("img").attr("alt"),
-                    element.getElementsByClass("font-meta chapter").text(),
-                    element.getElementsByTag("a").attr("href")
+                    element.getElementsByTag("a").getFirst().attr("title"),
+                    element.getElementsByTag("a").getLast().text(),
+                    element.getElementsByTag("a").getFirst().attr("href")
             ));
         }
-
         return temp;
     }
 

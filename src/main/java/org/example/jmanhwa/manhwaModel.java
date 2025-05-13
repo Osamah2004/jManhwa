@@ -1,16 +1,16 @@
 package org.example.jmanhwa;
 
+import javafx.scene.control.Button;
+
 public class manhwaModel {
 
     private String titles;
     private String lastChapter;
-    private String coverUrl;
     private String url;
 
-    public manhwaModel(String title, String lastChapter, String coverUrl, String url) {
+    public manhwaModel(String title, String lastChapter, String url) {
         this.titles = title;
         this.lastChapter = lastChapter;
-        this.coverUrl = coverUrl;
         this.url = url;
     }
 
@@ -22,11 +22,9 @@ public class manhwaModel {
         return lastChapter;
     }
 
-    public String getCoverUrl() {
-        return coverUrl;
-    }
-
-    public String getUrl() {
+    public Button getUrl() {
+        Button url = new Button("Print url");
+        url.setOnAction(actionEvent -> System.out.println(this.url));
         return url;
     }
 

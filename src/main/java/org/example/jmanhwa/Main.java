@@ -38,27 +38,20 @@ public class Main extends Application {
         TableColumn<manhwaModel, String> lastChapter = new TableColumn<>("lastChapter");
         lastChapter.setCellValueFactory(new PropertyValueFactory<>("lastChapter"));
 
-        TableColumn<manhwaModel, String> coverUrl = new TableColumn<>("coverUrl");
-        coverUrl.setCellValueFactory(new PropertyValueFactory<>("coverUrl"));
-
-        TableColumn<manhwaModel, String> url = new TableColumn<>("url");
+        TableColumn<manhwaModel, Button> url = new TableColumn<>("url");
         url.setCellValueFactory(new PropertyValueFactory<>("url"));
 
-        table.getColumns().addAll(coverUrl,titles,lastChapter,url);
+        table.getColumns().addAll(titles,lastChapter,url);
 
         b.setOnAction(actionEvent -> {
-            j = new mangatuk(t.getText());
+            j = new azora(t.getText());
+            //j.searchResults();
             table.setItems(FXCollections.observableArrayList(j.searchResults()));
+            System.out.println();
         });
 
-
         v.getChildren().add(new HBox(t,b));
-        ImageView i2 = new ImageView();
-        Image i = new Image("https://image.webp",true);
-
-        i2.setImage(i);
-
-        v.getChildren().add(i2);
+        v.getChildren().add(table);
 
         Scene scene = new Scene(v);
         stage.setTitle("Hello!");
