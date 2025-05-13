@@ -7,11 +7,13 @@ public class manhwaModel {
     private String titles;
     private String lastChapter;
     private String url;
+    private jSoupAbstract j;
 
-    public manhwaModel(String title, String lastChapter, String url) {
+    public manhwaModel(String title, String lastChapter, String url, jSoupAbstract jsoup) {
         this.titles = title;
         this.lastChapter = lastChapter;
         this.url = url;
+        this.j = jsoup;
     }
 
     public String getTitles() {
@@ -23,8 +25,10 @@ public class manhwaModel {
     }
 
     public Button getUrl() {
-        Button url = new Button("Print url");
-        url.setOnAction(actionEvent -> System.out.println(this.url));
+        Button url = new Button("View Chapters");
+        url.setOnAction(event -> {
+            new otherScene(titles, j.chaptersLinks(this.url));
+        });
         return url;
     }
 

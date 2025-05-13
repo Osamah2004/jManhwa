@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class mangatuk extends jSoupAbstract {
     private ArrayList<manhwaModel> temp = new ArrayList<>();
@@ -33,7 +34,8 @@ url;*/
             temp.add(new manhwaModel(
                     element.getElementsByTag("img").attr("alt"),
                     element.getElementsByClass("font-meta chapter").text(),
-                    element.getElementsByTag("a").attr("href")
+                    element.getElementsByTag("a").attr("href"),
+                    this
             ));
         }
 
@@ -41,7 +43,14 @@ url;*/
     }
 
     @Override
-    public ArrayList<String> chaptersLinks() {
-        return null;
+    public ArrayList<ArrayList<String>> chaptersLinks(String url) {
+        ArrayList<ArrayList<String>> chapters = new ArrayList<>();
+        // Implementation needed
+        return chapters;
+    }
+    @Override
+    public ArrayList<String> imageLinks(String url) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'imageLinks'");
     }
 }

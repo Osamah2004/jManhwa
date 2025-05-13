@@ -6,6 +6,7 @@ import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -17,12 +18,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
     VBox v = new VBox();
     jSoupAbstract j;
-
 
     @Override
     public void start(Stage stage) {
@@ -31,15 +32,24 @@ public class Main extends Application {
         Button b = new Button("Search");
 
         TableView<manhwaModel> table = new TableView<>();
+        
+        // Make table automatically resize columns and rows
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
+        // Make table fill available width
+        table.setMaxWidth(Double.MAX_VALUE);
 
         TableColumn<manhwaModel, String> titles = new TableColumn<>("titles");
         titles.setCellValueFactory(new PropertyValueFactory<>("titles"));
+        titles.setMinWidth(200); // Set minimum width for titles
 
         TableColumn<manhwaModel, String> lastChapter = new TableColumn<>("lastChapter");
         lastChapter.setCellValueFactory(new PropertyValueFactory<>("lastChapter"));
+        lastChapter.setMinWidth(100); // Set minimum width for last chapter
 
         TableColumn<manhwaModel, Button> url = new TableColumn<>("url");
         url.setCellValueFactory(new PropertyValueFactory<>("url"));
+        url.setMinWidth(100); // Set minimum width for URL
 
         table.getColumns().addAll(titles,lastChapter,url);
 
@@ -47,14 +57,13 @@ public class Main extends Application {
             j = new azora(t.getText());
             //j.searchResults();
             table.setItems(FXCollections.observableArrayList(j.searchResults()));
-            System.out.println();
         });
 
         v.getChildren().add(new HBox(t,b));
         v.getChildren().add(table);
 
         Scene scene = new Scene(v);
-        stage.setTitle("Hello!");
+        stage.setTitle("jManhwa");
         stage.setWidth(600);
         stage.setScene(scene);
         stage.show();
