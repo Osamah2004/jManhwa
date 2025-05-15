@@ -1,6 +1,7 @@
 package org.example.jmanhwa;
-
+	
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -23,13 +24,19 @@ import java.util.ArrayList;
 public class Main extends Application {
 
     VBox v = new VBox();
-    jSoupAbstract j;
+    private static HostServices hostServices;
+    private static jSoupAbstract j;
 
     @Override
     public void start(Stage stage) {
+        hostServices = getHostServices();
         TextField t = new TextField();
         t.setPromptText("Insert name");
         Button b = new Button("Search");
+        Button b2 = new Button("View Downloaded");
+        b2.setOnAction(actionEvent -> {
+            new viewDownloadedChapters(hostServices);
+        });
 
         TableView<manhwaModel> table = new TableView<>();
         
@@ -59,7 +66,7 @@ public class Main extends Application {
             table.setItems(FXCollections.observableArrayList(j.searchResults()));
         });
 
-        v.getChildren().add(new HBox(t,b));
+        v.getChildren().add(new HBox(t,b,b2));
         v.getChildren().add(table);
 
         Scene scene = new Scene(v);
@@ -71,5 +78,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static jSoupAbstract getJ() {
+        return j;
+    }
+
+    public static HostServices getAppHostServices() {
+        return hostServices;
     }
 }

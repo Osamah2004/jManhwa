@@ -1,11 +1,10 @@
 package org.example.jmanhwa;
-
+	
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public abstract class jSoupAbstract {
 
@@ -13,6 +12,7 @@ public abstract class jSoupAbstract {
     public abstract ArrayList<manhwaModel> searchResults();
     public abstract ArrayList<ArrayList<String>> chaptersLinks(String url);
     public abstract ArrayList<String> imageLinks(String url);
+    public abstract String getSiteName();
 
     public Document newDocument(String url){
         try {
@@ -21,6 +21,5 @@ public abstract class jSoupAbstract {
             throw new RuntimeException(e);
         }
     }
-
 
 }

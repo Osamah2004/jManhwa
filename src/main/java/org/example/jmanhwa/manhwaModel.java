@@ -1,5 +1,5 @@
 package org.example.jmanhwa;
-
+	
 import javafx.scene.control.Button;
 
 public class manhwaModel {
