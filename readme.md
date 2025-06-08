@@ -115,31 +115,36 @@ This approach provides:
 ## User Guide
 
 ### 1. Main Interface
-![Main Interface](https://github.com/user-attachments/assets/11132bf4-9a17-4a80-85ce-a54ea0a38b20)
-
 *The main search interface where you can enter manhwa titles to search*
 
-### 2. Search Results
-![Search Results](https://github.com/user-attachments/assets/e1121c8f-cc6d-4e00-be36-3133df801246)
+![Main Interface](https://github.com/user-attachments/assets/11132bf4-9a17-4a80-85ce-a54ea0a38b20)
 
+### 2. Search Results
 *View search results with titles and available chapters, in this image I will use Solo Leveling as an example*
 
-### 3. Chapter Selection
-![Chapter Selection](https://github.com/user-attachments/assets/573e1213-81d6-4197-8560-d7045a6750a7)
+![Search Results](https://github.com/user-attachments/assets/e1121c8f-cc6d-4e00-be36-3133df801246)
 
+### 3. Chapter Selection
 *Select individual chapters or use the "Select All" option.*
 *there's 2 empty chapters in solo leveling's chapters page so that explains why the first chapter rows are empty.*
 
+![Chapter Selection](https://github.com/user-attachments/assets/573e1213-81d6-4197-8560-d7045a6750a7)
+
 ### 4. Download Progress
+*Track download progress for individual chapters and overall progress*
+
 ![Download Progress](https://github.com/user-attachments/assets/aff71b03-c199-4d90-bf4a-05d74cc51743)
 ![View Downloaded](https://github.com/user-attachments/assets/a8d642d3-4942-4947-a3ce-427c19ebb68e)
 
-*Track download progress for individual chapters and overall progress*
-
 ### 5. Reading Interface
+*View downloaded chapters in your default web browser*
+
 ![Reading Interface](https://github.com/user-attachments/assets/4c771583-8e2b-4e5c-8b2c-97a2941f33ac)
 
-*View downloaded chapters in your default web browser*
+### 6. Have fun
+
+![image](https://github.com/user-attachments/assets/18d32345-b915-40cc-a7fa-9709e3be721c)
+
 
 ## Usage
 
