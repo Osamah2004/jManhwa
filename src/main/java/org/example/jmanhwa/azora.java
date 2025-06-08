@@ -7,9 +7,7 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 
 public class azora extends jSoupAbstract{
-
     private ArrayList<manhwaModel> temp = new ArrayList<>();
-
     private Document d;
 
     @Override
@@ -17,7 +15,12 @@ public class azora extends jSoupAbstract{
         return "azora";
     }
 
-    public azora(String url){
+    public azora(){
+        super();
+    }
+
+    @Override
+    public void setUrl(String url){
         url = url.replace(" ","+");
         url = "https://azoramoon.com/?s="+url+"&post_type=wp-manga";
         d = newDocument(url);

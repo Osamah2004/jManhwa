@@ -13,12 +13,14 @@ public abstract class jSoupAbstract {
     public abstract ArrayList<ArrayList<String>> chaptersLinks(String url);
     public abstract ArrayList<String> imageLinks(String url);
     public abstract String getSiteName();
+    public abstract void setUrl(String url);
 
     public Document newDocument(String url){
         try {
-            return Jsoup.connect(url).timeout(7500).get();
+            return Jsoup.connect(url).timeout(10000).get();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            new displayLabel("Connection timed out, please try again.", "jManhwa");
+            return null;
         }
     }
 

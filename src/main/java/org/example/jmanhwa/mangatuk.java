@@ -1,27 +1,28 @@
 package org.example.jmanhwa;
 	
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class manhwatuk extends jSoupAbstract {
+public class mangatuk extends jSoupAbstract {
     private ArrayList<manhwaModel> temp = new ArrayList<>();
-
     private Document d;
 
     @Override
     public String getSiteName() {
-        return "manhwatuk";
+        return "mangatuk";
     }
 
-    public manhwatuk(String url){
+    public mangatuk(){
+        super();
+    }
+
+    @Override
+    public void setUrl(String url){
         url = url.replace(" ","+");
-        url = "https://manhwatuk.com/?s="+url+"&post_type=wp-manhwa";
+        url = "https://mangatuk.com/?s="+url+"&post_type=wp-manga";
         d = newDocument(url);
     }
 /*
@@ -57,10 +58,21 @@ url;*/
 
     @Override
     public ArrayList<ArrayList<String>> chaptersLinks(String url) {
+        System.out.println(url);
+        d = newDocument(url);
         ArrayList<ArrayList<String>> chapters = new ArrayList<>();
-        // Implementation needed
+        Element e = d.getElementsByClass("listing-chapters_wrap").first();
+        Elements e2 = e.getElementsByTag("a");
+        
+        for (int i = e2.size()-1; i >= 0; i--) {
+            ArrayList<String> row = new ArrayList<>();
+            row.add(e2.get(i).text());  // Chapter title
+            row.add(e2.get(i).attr("href"));  // Chapter URL
+            chapters.add(row);
+        }
         return chapters;
     }
+
     @Override
     public ArrayList<String> imageLinks(String url) {
         // TODO Auto-generated method stub

@@ -3,7 +3,6 @@ package org.example.jmanhwa;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,21 +24,24 @@ public class Main extends Application {
 
     VBox v = new VBox();
     private static HostServices hostServices;
-    private static jSoupAbstract j;
+    private static jSoupAbstract j2;
+    private static int i = 0;
 
     @Override
     public void start(Stage stage) {
         hostServices = getHostServices();
+        j2 = new azora();
         TextField t = new TextField();
         t.setPromptText("Insert name");
         Button b = new Button("Search");
         Button b2 = new Button("View Downloaded");
+        
+        TableView<manhwaModel> table = new TableView<>();
+        
         b2.setOnAction(actionEvent -> {
             new viewDownloadedChapters(hostServices);
         });
 
-        TableView<manhwaModel> table = new TableView<>();
-        
         // Make table automatically resize columns and rows
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
@@ -61,9 +63,8 @@ public class Main extends Application {
         table.getColumns().addAll(titles,lastChapter,url);
 
         b.setOnAction(actionEvent -> {
-            j = new azora(t.getText());
-            //j.searchResults();
-            table.setItems(FXCollections.observableArrayList(j.searchResults()));
+            j2.setUrl(t.getText());
+            table.setItems(FXCollections.observableArrayList(j2.searchResults()));
         });
 
         v.getChildren().add(new HBox(t,b,b2));
@@ -81,7 +82,7 @@ public class Main extends Application {
     }
 
     public static jSoupAbstract getJ() {
-        return j;
+        return j2;
     }
 
     public static HostServices getAppHostServices() {
