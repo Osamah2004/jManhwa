@@ -143,8 +143,7 @@ This approach provides:
 
 ### 6. Have fun
 
-![image](https://github.com/user-attachments/assets/18d32345-b915-40cc-a7fa-9709e3be721c)
-
+![image](https://github.com/user-attachments/assets/b48d282b-eef5-4c56-8c03-b2224f6a269b)
 
 ## Usage
 
